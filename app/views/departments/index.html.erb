@@ -1,0 +1,32 @@
+<body>
+   <h3>Listing departments </h3>
+   <div id="complete_department">
+ <table id="department_table"
+  data-source="<%= departments_path(format: "json") %>" >
+  <thead>
+   <tr>
+      <th>Name</th>
+      <th>Edit </th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+
+  <tbody>
+       <% @departments.each do |department| %>
+    <tr>
+      <td><%= link_to department.name, department, :remote => true %></td>
+      <td><%= link_to 'Edit', edit_department_path(department) %></td>
+      <td><%= link_to 'X', department, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+</div>
+ 
+
+
+<br/>
+<br/>
+<center> <%= link_to 'Add a New Department', new_department_path, :class => 'btn btn-large btn-primary' %> </center>
+</body>
+<%= render 'show_modal' %>

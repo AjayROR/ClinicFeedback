@@ -1,0 +1,8 @@
+Hi <%= @user.name %> ,
+
+              You are Most Welcome to our Application. Our Admin has Approved your joining to <%= Department.find(@user.department_id).name %> Department. Now You are just one step back to use our application. Just click below URL to Reset your password 
+              <%= edit_password_reset_url(@user.password_reset_token) %>
+Kindly login into our Application with your Email Id <%= @user.email %> . For Security purpose we suggest you to update password in Personization Section.
+
+Thanks,
+Development Team

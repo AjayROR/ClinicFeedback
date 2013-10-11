@@ -1,0 +1,36 @@
+<div class="modal">
+        <div class="modal-header">
+        <h3>Recover Password</h3>
+        </div>
+
+        <%= form_tag password_resets_path, :remote =>true, :method => :post do %>
+        <div class="modal-body form-horizontal">
+               
+ 
+             
+          <div class="test">
+                  <div class = "iconic_user"></div>
+                 <div class="userfiled">
+                  <!-- <input type="text" class="name" placeholder="user@example.com" /> -->
+
+                <%= text_field_tag :email, nil, :placeholder => "user@example.com",:class => 'name' %>
+
+                 </div>
+            </div>  
+            <br>
+           
+                    <%=  radio_button_tag :name,  :time, true %> 
+                    <strong>Send Password Reset Link to Mail </strong>
+                   <%=  radio_button_tag :name, :graph %>
+                    <strong> Get Recovery Code on Mobile </strong>
+        
+         
+        <div class="modal-footer">
+         <%= submit_tag 'get password recovery information', :class => 'btn btn-primary', :name => 'password_reset' %>
+         
+ 
+         
+         <%= link_to ' Cancel ', root_path , :class => 'btn btn-primary'%>
+       </div>
+      <% end %>
+</div>

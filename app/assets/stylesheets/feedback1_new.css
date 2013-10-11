@@ -1,0 +1,30 @@
+
+.new_feedback{
+
+
+	 font-family:  'Trebuchet MS';
+	 line-height: 180%;
+
+}
+
+
+
+/*.big{ width: 2em; height: 2em; }  */
+
+input[type=radio] {
+ /*   -webkit-transform: scale(3, 3);
+    margin: 1.25em 1.25em 1.25em 0;*/
+    width: 8%;
+    height: 50%;
+}
+
+input[type=text]{
+
+	width: 200px;
+	line-height: 30px;
+	height: 30px;
+}
+
+.editor-field  select{
+	font-family: 'Trebuchet MS';
+}

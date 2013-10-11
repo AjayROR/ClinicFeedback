@@ -1,0 +1,10 @@
+alert('hi');
+
+$(document).ready(function() {
+
+       $('div#thedialog').dialog({ autoOpen: false })
+
+       $('#thelink').click(function(){ 
+          	$('div#thedialog').dialog('open'); 
+       });
+})

@@ -1,0 +1,7 @@
+$().ready(function() {
+  $(".new_feedback").click(function () {
+    $(this).hide();
+    $(this).after('<input type="button" disabled="disabled" value="' + $(this).val() + '" />');
+    return true;
+  });
+});

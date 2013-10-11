@@ -1,0 +1,28 @@
+<table class="doc_request">
+<tr>
+  <th> Name </th>
+  <th> Mobile No. </th>
+  <th> Email </th>
+  <th> Department </th>
+  <th> Current Status </th>
+  <th> Update Status </th>
+     </tr>
+
+  <%= will_paginate @docs %>
+
+<% @docs.each do |doc| %>
+    <tr> 
+       <td>  <%= doc.name %>
+       <td> <%= doc.mobile_no %> 
+        <td> <%= doc.email %> 
+       <td> <%= Department.find(doc.department_id).name %> 
+       <td> <%= link_to 'Pending','', :class => "btn btn-lg btn-warning" %></td>
+     <td colspan=2> <%= link_to 'Approve', activate_my_doctor_user_path(doc.id),  :remote => true, :method => :post, :class => 'btn btn-success del_row' %>
+       <%= link_to 'Reject', remove_doctor_user_path(doc.id), :method => :delete,  data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %> </td>  
+ </tr>
+  <% end %>
+
+ 
+
+</table> 
+

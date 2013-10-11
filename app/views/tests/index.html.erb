@@ -1,0 +1,30 @@
+<h1>Listing tests</h1>
+
+<table>
+     <table id="test_table" class="display" data-source="<%= tests_path(format: "json") %>" >
+      <thead>
+  <tr>
+    <th>A</th>
+    <th>B</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+
+  <tbody>
+<% @tests.each do |test| %>
+  <tr>
+    <td><%= test.a %></td>
+    <td><%= test.b %></td>
+    <td><%= link_to 'Show', test %></td>
+    <td><%= link_to 'Edit', edit_test_path(test) %></td>
+    <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Test', new_test_path %>

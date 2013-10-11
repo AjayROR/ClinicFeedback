@@ -1,0 +1,10 @@
+<center> 
+	<%= form_tag(search_feedback_path(:id), :method => :get) do %>
+
+      <%= label_tag  :token_no, 'Provide your Token No.' %>
+      <%= text_field_tag :token_no %>
+	  <%= submit_tag  'Check Status', :class => 'btn btn-large btn-primary' %> 
+
+	<% end %>
+	     
+</center>

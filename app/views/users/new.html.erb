@@ -1,0 +1,107 @@
+<div class = "navbar-wrapper">
+                       <br>
+                <!-- Navigation -->
+                <div class = "navbar">
+                  <div class="navbar navbar-inverse">
+              <div class="navbar navbar-inner" id = "short">
+                <ul class="nav">
+                  <li class = 'active'> <%= link_to 'Doctor', root_path %> </li>
+                  <li><%= link_to 'Patient',patient_path %></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+   </div>
+
+
+
+            <div class="well">
+              <ul class="nav nav-tabs">
+                <li class = "active"><a href="#login" data-toggle="tab">Login</a></li>
+                <li><a href="#create" data-toggle="tab">Create Account</a></li>
+              </ul>
+
+           <!-- this is my login window -->
+
+               <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="login">
+                      <%= form_for(:session, :url => sessions_path) do |f| %>
+                  <div id="p1">
+                     <div id = "p2">
+                 <legend><div class="form_title">Login </div></legend> 
+
+              <div id = "log_fields">
+              <div class="full" id ="login">
+                  <div class = "iconic_user"></div>
+                    <div class="userfield">
+                         <%= f.text_field :email, :placeholder => "user@example.com",:class => 'name' %>
+                  
+                       </div>
+                  </div> 
+
+                  <br/>
+              <div class="full">
+                  <div class = "iconic_pwd"></div>
+                    
+                         <%= f.password_field :password, :placeholder => "Password",:class => 'name' %>
+                     
+                  </div> 
+                  </div>
+                      <br>
+                  <div class="control-group" id="login_footer">
+                    <%= f.submit  'Login', :class => "log btn btn-success" %> <br>
+                    <%= link_to 'Forgot Your Password?', new_password_reset_path, :class => "link-option" %>
+                    
+                  </div>
+                  
+                   
+                    <% end %>
+                  </form>                
+                </div>
+                   </div>
+                 </div>
+
+                      <!--login window finishes here -->
+     <div class="tab-pane fade in" id="create">
+        <%= form_for @user, :validate => true, :class => 'form-horizontal' do |user| %>
+              <div><legend class="">Create Account</legend></div> 
+                    
+             <div id ="signup_form">
+             <table class="sign_table">
+              <tr>
+                <td><div class="left_side">Doctor, Enter Your Name Please:</div></td>
+                <td class="right_side"><%= user.text_field :name %></td>       
+              </tr>   
+              <tr>
+                <td>
+              Enter Your Email ID: </td>
+              <td><%= user.text_field :email, :placeholder => 'user@example.com', :cass=> 't_field' %> </td>
+            </tr>
+
+            <tr><td>
+              Enter Your 10 Digit Mobile No.:</td>
+              <td><%= user.text_field :mobile_no, :placeholder => 'XXXXXXXXXX' %> </td>
+           </tr>
+
+            <tr>
+            <td>Select your Department :</td>
+            <td><%= collection_select(:user, :department_id, Department.order('name ASC'), :id, :name,  :class => "bfh-selectbox-toggle") %> </td></tr>
+
+             <tr><td> Enter Password :</td>
+              <td><%= user.password_field :password, :placeholder => 'Password' %></td></tr>
+
+          <tr>
+            <td>Please, Confirm Your Password:</td>
+            <td><%= user.password_field :password_confirmation, :placeholder => 'Confirm Password' %></td></tr>
+            </table>
+              
+              </div>
+              <br><br>
+              <center><%= user.submit 'Create Account', :class => "btn  btn-primary" %></center>
+              <% end %>
+      </div>
+            </div>
+            </div>

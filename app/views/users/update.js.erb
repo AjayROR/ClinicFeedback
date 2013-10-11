@@ -1,0 +1,10 @@
+alert('Name Updated Successfully');
+
+$('.ajay').bind(click,function() { 
+  //$(this).text("Profile Updated"); 
+  alert("name updatd");
+ });
+
+
+$("#profile").html("<%= escape_javascript( render(:partial => "profile") ) %>");
+ 

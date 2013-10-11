@@ -1,0 +1,102 @@
+Here Your comment count is  <%= @feedback.comments.count %>
+   & token is <%= @feedback.token %>
+
+<% if current_user %>
+ <% unless  @feedback.id == Feedback.first.id   %>
+ <%= link_to 'Previous',Feedback.get_previous_feedback(@feedback,current_user) %> 
+ <% end %>
+
+
+
+<% unless @feedback.id == Feedback.last.id %>
+<%= link_to 'Next', Feedback.get_next_feedback(@feedback,current_user) %>
+<% end %>
+
+<% end %>
+
+
+ 
+<table class = "show_feed">
+  <tr>
+  <td>Nurses were considerate and respectful :</td>
+  <td> <i> <%= @feedback.rating1 %>   </i> </td>
+  </tr>
+
+<tr>
+  <td>The doctor took the necessary time to inform me about my situation in a matter that I undrstood. </td>
+  <td><i> <%= @feedback.rating2 %>  </i> </td>
+</tr>
+
+<tr>
+  <td>3. My bathroom was clean all the times <strong/> </td>
+  <td><i><%= @feedback.rating3 %>  </i> </td>
+</tr>
+
+<tr>
+     <td>4. It was quiet during night time </td>
+      <td><i><%= @feedback.rating4 %>  </i> </td>
+<tr>
+
+<tr>
+  <td>5. Did you receive any new medications ? </td>
+   <td><i>  <%= @feedback.rating5 %> </i> </td>
+</tr>
+
+<tr>
+  <td>  5a. Nurse/Staff stopped to explain why you were receiving the new medications : </td>
+  <td>  <i><%= @feedback.rating5a %> </i> </td>
+</tr>
+
+<tr>
+  <td>5b. Nurse/Staff clearly explained the side effects of new medication in a manner you could understand : </td>
+ <td><i><%= @feedback.rating5b %>  </i></td>
+</tr>
+
+<tr>
+<td> 6. On a Scale of 1-10, How would you rate your overall experience in the hospital up until this point ?  </td>
+<td><i><%= @feedback.rating6 %> </i> </td>
+ </tr>
+
+ <tr>
+  <td> Patients Name  :  </td> 
+  <td> <i> <%= @feedback.name %>   </i> </td>
+</tr>
+
+  <tr>
+    <td>  Patients  EMail  ID : </td>
+    <td> <i> <%= @feedback.email %> </i> </td>
+  </tr>
+  <tr>
+   <td>  Responsible Deparment : </td>
+   <td> <i> <%= @feedback.department.name %></i> </td>
+ </tr>
+
+
+    <tr>
+       <td>  Feedback Summary : </td>
+      <td>
+        <b>  <%= @feedback.feedback %>  </b>
+      </td>
+    </tr>
+
+ </table>    
+<div id = 'show_comment'> <%= render 'comments' %> </div>
+
+
+<center> <h3> Add a comment: </h2> </center>
+        <%= form_for([@feedback, @feedback.comments.build], :remote => true) do |f| %>
+             <p>
+                <center> <%= f.text_field :body,  :cols => "50", :rows => "45" %> </center> 
+           </p>
+
+            <p> 
+                <center> <%=  f.submit 'Add Comment', :class => 'btn btn-success btn-large', :remote => true %> </center>
+            </p>
+        <% end %>
+
+
+
+
+        <% if current_user %>
+<%= link_to 'Check list of all Feedbacks Added', feedbacks_path %>
+<% end %>

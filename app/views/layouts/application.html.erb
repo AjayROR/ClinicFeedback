@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> CAP</title>
+<%= stylesheet_link_tag  "application", :media => "all" %>
+<%= javascript_include_tag "application" %> 
+<%= csrf_meta_tags %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body> 
+ <% if current_user %>
+ <div class = "navbar">
+             <br>
+         <div class = "navbar">
+                  <div class="navbar navbar-inverse">
+              <div class="navbar navbar-inner" id = 'short_login'>
+                <ul class="nav" id ='tagcloud'>
+   <li class ='active'> <%= link_to 'Home', current_user %> </li>
+   <li> <%= link_to 'Profile', edit_user_path(current_user.id)  %> </li>
+                 
+       <% if  current_user_is_admin? %>
+    <li class ='.doc_count'> <%= link_to 'New Docs Request' + "(" + User.pending_doc_count + ")", request_path %> </li>
+    <li><%= link_to 'Check All Doctors' "(" +User.count.to_s + ")" , users_path %> </li>
+ 
+       <% else %>
+    <li> <%= link_to 'Meet your Colleagues', users_path%>  </li>
+       <% end %>
+ 
+    <li>  <%= link_to 'All feedbacks' + "(" +Feedback.count.to_s + ")", feedbacks_path  %>  </li>  
+    <li>   <%= link_to 'Departments' "(" +Department.count.to_s + ")", departments_path %>    </li>   
+    <li><%= link_to "Sign out",  signout_path %></li>
+</ul>
+        </div>
+        </div>
+        </div>
+</div>
+<% end %>
+
+
+
+  <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> error">
+              <%= value %>
+        </div>
+  <% end %>
+  
+ 
+ <%= yield %>
+
+</body>
+</html>

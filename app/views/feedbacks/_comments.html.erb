@@ -1,0 +1,27 @@
+<table class="show_feed">
+<% if @feedback.comments.count > 0  %>
+             <tr>  
+             	 <td> <h4> Added Comments  :</h4> </td> 
+             </tr>
+           
+           <table class="inner_comment">
+        <% @feedback.comments.each do |comment| %>
+        <center>
+         <tr id="image"> <td rowspan="2"><img src="http://placekitten.com/72" /></td>
+            <td><strong>  <%= comment.commenter %>says :</strong></td>
+         </tr>
+        
+         <tr>
+            <td> <%= comment.body %>(Posted <%= time_ago_in_words(comment.created_at) %> Before.) 
+            </td> 
+        </tr> 
+        </center>
+        <% end %>
+        </table>
+        <% else %> 
+        <tr> <td> <center> <h3> NO COMMENTS YET </h3> </center> </td> </tr>
+<% end %>
+
+
+</table>
+

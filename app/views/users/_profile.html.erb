@@ -1,0 +1,38 @@
+<div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+         
+          <%= form_for(@user, :remote => true, :html=> {:id => 'tab'}) do |f| %>
+               <label>   <%= f.label :name  %> </label>
+                <%= f.text_field :name, :class => 'input-xlarge' %>
+   
+  
+                <label><%= f.label :email  %></label>
+                <%= f.text_field :email, :class => 'input-xlarge' %>
+
+             
+                <div>
+                    <%= f.submit 'Update Profile', :remote => true, :class => 'btn btn-primary' %> 
+                    
+                    <%= link_to ' Cancel ',  current_user , :remote => true,  :class => 'btn btn-inverse' %>
+               </div>
+          <% end %>
+</div>
+
+
+<div class="tab-pane fade" id="profile">
+         <%= form_for @user, :html=> {:id => 'tab2'} do |f| %>
+           <%= f.label :password, 'Current Password'%>
+           <%= f.password_field :password, :class => 'input-xlarge', :placeholder => 'Enter Current Password' %>
+      
+           <%= f.label :password_new_1, 'New Password'%>
+           <%= f.password_field :password, :class => 'input-xlarge', :placeholder => 'Enter New Password' %>
+
+          <%= f.label :password_new_1, 'Confirm Password'%>
+          <%= f.password_field :password, :class => 'input-xlarge', :placeholder => 'Confirm your Password' %>
+
+          <div>
+               <%= f.submit 'Update Password', :class => 'btn btn-primary' %> 
+               <%= link_to ' Cancel ', current_user , :class => 'btn btn-inverse'%>
+          </div>
+        <% end %>
+</div>

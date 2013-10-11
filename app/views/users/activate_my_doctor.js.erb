@@ -1,0 +1,12 @@
+ // $("#doc_request").html("<%= escape_javascript( render(:partial => "doc_request_list"
+ 
+
+$('.del_row').bind('ajax:success', function() {  
+      $(this).closest('tr').fadeOut();  
+  });  
+
+
+$('#tagcloud').html(function(i, html) {
+    return html.replace(/,/g, "</li><li>");
+});
+        

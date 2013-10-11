@@ -1,0 +1,61 @@
+<div class = "container">
+                <!-- header content -->
+                <h1> <%= link_to 'Hospital Application', root_path %> </h1>
+
+                <!-- Navigation -->
+                <div class = "navbar">
+                  <div class="navbar-inner">
+              <div class="container">
+                <ul class="nav">
+                  <li> <%= link_to 'Doctor', root_path %> </li>
+                  <li class = 'active'><%= link_to 'Patient',patient_path %></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+   </div>
+
+
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#help" data-toggle="tab">May I Help you!</a></li>
+      <li><a href="#appointment" data-toggle="tab">Book Your Appointment</a></li>
+      <li><a href="#feedback" data-toggle="tab">Submit Feedback </a> </li>
+      <li><a href="#status" data-toggle="tab">Check Appointment/Feedback Status </a></li>
+    </ul>
+
+     <div id="myTabContent" class="tab-content"> <!--keep all tab contents -->
+     	
+     	<!--may I help you -->
+     	<div class="tab-pane active in" id="help">
+     		<p class='custom_font'>Hi Patient. Welcome to My Clinic Application. Let me clear your queries.
+     			We have got 3 sections here for you. If you need our doctors assitance please click on our next tab(Book Your Appointment) Reserve a suitable slot for yourself & if you need to submit a feedback form then go through the next "Submit Feedback" Section. After successful entry in any of these two sections if you want to check your appointment/Feedback Status then go through the last Check "Appointment/Feedback Status" Section. Have a Great Day!!! :)
+     		</p>
+
+        </div>
+
+         <!-- Have a Query Section -->
+         <div class="tab-pane fade" id="appointment">
+         	 <%= link_to 'Book Appointment','', :class => 'btn btn-large btn-primary' %>
+         </div>
+
+         <!-- Check My Query Status -->
+         <div class = "tab-pane fade" id= "feedback">
+ 
+<center><%= link_to 'Get your Feedback Form', new_feedback_path, :class => 'btn btn-large btn-primary' %> </center>
+
+         </div>
+
+         <!-- Submit Feedback -->
+         <div class ="tab-pane fade" id="status" >
+          <%= render 'feedbackstatus' %>
+         </div>
+
+
+    </div>
+
+</div>
+    

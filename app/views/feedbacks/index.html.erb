@@ -1,0 +1,36 @@
+<h4> Hey <%= current_user.name %>  Check  Your Patient Feedback Reports </h4>
+ <!-- <table class="table table-striped table-condensed"> -->
+<!--   <table class="feedback"> -->
+<div id ="complete_feedback">
+<table id="feedbacktable" data-source="<%= feedbacks_path(format: "json") %>" >
+  <thead>
+    <tr>
+       <th> Token ID </th> 
+       <th>  Added By</th> 
+       <th> Concerned Dept</th> 
+       <th> Feedback Added On</th>  
+       <th> Last Visited On</th>  
+       <th> Comments </th>  
+       <th> Average Raiting </th> 
+       <th>Check Details </th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @feedbacks.each do |feedback| %> 
+
+    <tr>
+       <td> <%= link_to feedback.token, feedback %>  </td>
+       <td> <%= feedback.name %>  </td>
+       <td> <%= Feedback.find_department_name(feedback) %>   </td>
+       <td> <%= (feedback.created_at.strftime("%d %b. %Y")) %> </td>
+       <td>Last Visited <%= time_ago_in_words(feedback.updated_at) %> Ago. </td>
+       <td> <%= feedback.comments.count %></td>
+       <td> <%= feedback.average_raiting %> / 10 </td>
+       <td> <%= link_to 'Check Detail', feedback, :class => 'btn btn-success', :remote => true %>  
+        </tr>
+    <% end %>
+  </tbody>
+</table>    
+</div>
+<%= render 'show_modal' %>

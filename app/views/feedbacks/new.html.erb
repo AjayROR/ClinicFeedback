@@ -1,0 +1,121 @@
+
+<%= render 'top' %>
+
+
+ <center><h2> Feedback Form </h2> </center>
+  <%= form_for(@feedback) do |f| %> 
+
+  <% if @feedback.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @feedback.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <table class="new_feedback">
+	<tr>
+       <td> <%= f.label :rate1, '1. Nurses were considerate and respectful' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+           &nbsp;  &nbsp; <%= f.radio_button :rating1, i  %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+    <td> <%= f.label :rate2, '2. The doctor took the necessary time to inform me about my situation in a matter that I undrstood.' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+        &nbsp;  &nbsp; <%=  f.radio_button :rating2, i, :class => 'big' %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+       <td> <%= f.label :rate3, '3. My bathroom was clean all the times' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+          &nbsp;  &nbsp; <%=  f.radio_button :rating3, i  %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+       <td> <%= f.label :rate4, '4. It was quiet during night time' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+         &nbsp;  &nbsp; <%=  f.radio_button :rating4, i  %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+       <td> <%= f.label :rate5, '5. Did you receive any new medications ? ' %><br /> </td>
+       <td> <% for i in 1..2 do %>
+             &nbsp;  &nbsp; <%=  f.radio_button :rating5, i  %>  &nbsp;
+             <% if i == 1 %>
+             Yes
+             <% else %>
+             No
+            <% end %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+       <td> <%= f.label :rate5a, '5a. Nurse/Staff stopped to explain why you were receiving the new medications' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+          &nbsp;  &nbsp; <%=  f.radio_button :rating5a, i  %>  <!-- &nbsp;<%=h i %>&nbsp; -->
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+       <td> <%= f.label :rate5b, '5b. Nurse/Staff clearly explained the side effects of new medication in a manner 
+you could understand 
+' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+         &nbsp;  &nbsp; <%=  f.radio_button :rating5b, i  %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+       <td> <%= f.label :rate6, '6. On a Scale of 1-10, How would you rate your overall experience in the hospital up until this point ? ' %><br /> </td>
+       <td> <% for i in 1..5 do %>
+           &nbsp;  &nbsp; <%=  f.radio_button :rating6, i  %>
+            <% end %>
+       </td>
+   </tr>
+
+<tr>
+	 <td> <%= f.label :department, 'Select a Department, you want to report to  : ' %>  <br> </td>
+	 	<td>
+  <%= collection_select(:feedback, :department_id, Department.order('name ASC'), :id, :name) %>
+
+
+	 	</td>
+</tr>
+
+    <tr>
+	 <td> <%= f.label :feedback, ' Enter any Additional feedback, if you have : ' %>  <br> </td>
+	 <td> <%= f.text_area  :feedback, placeholder: 'Give your valuable feedback', :size => "30X10" %></td>
+     </tr>
+
+     <tr>
+	 <td> <%= f.label :name, 'Enter Your name Please : ' %>  <br> </td>
+	 <td> <%= f.text_field :name, placeholder: 'Ex. John Mark', maxlength: 50,
+	  size: 30 %></td>
+     </tr>
+
+
+     <tr>
+	 <td> <%= f.label :email, 'Enter Your email Address where we can reach you : ' %>  <br> </td>
+	 <td> <%= f.text_field :email, placeholder: 'user@example.com', maxlength: 50, size: 30 %></td>
+     </tr>
+ 
+</table>
+   <br>
+  <center><%= f.submit 'Submit Your Feedback Form', :class => "btn btn-primary new_feed" %> </center>
+  
+<% end %>

@@ -1,0 +1,28 @@
+<h3> <%= current_user.name %> , find your colleagues in Below List : </h3>
+<!-- <table class = "all_user"> -->
+<div id ="complete_user">
+<table id ="user_table" class="all_user" data-source="<%= users_path(format: "json")%>">
+  <thead>	
+  <tr>
+     <th> Docs Name</th> </th>
+     <th> Email ID </th>
+	   <th> Working Since</th> 
+	   <th> Department in Charge</th> 
+  </tr>
+ </thead>
+
+   <tbody>
+   <% @users.each do |user| %> 
+ 
+     <% if current_user_is_admin? || isSameDepartment?(user) %>
+
+      <tr> <td> <%= link_to user.name, user_path(user) %> </td> 
+           <td> <%= user.email %> </td>
+           <td> <%= time_ago_in_words(user.updated_at) %> </td>
+           <td> <%= Department.find(user.department_id).name %> </td> 
+       </tr>
+      <% end %>
+  <% end %> 
+</tbody>
+</table>
+</div>

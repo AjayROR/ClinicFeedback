@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b> Department Name:</b>
+  <%= @department.name %>
+</p>
+<p>
+	<% if @department.users.count > 0 %>
+	<b> All Doctors : </b>
+	
+	<ul>
+            <% @department.users.each do |doctor| %>
+             <li> <%= doctor.name %> </li>
+            <% end %>
+</ul>
+  
+   <% else %>
+   <b>Sorry, No Docs added yet for this Department !  </b>
+  <% end %>
+
+<br>
+<%= link_to 'Prev', move_prev_path %> 
+<%= link_to 'Back', departments_path %>
+<%= link_to 'Next', department_path( params[:id]) %>

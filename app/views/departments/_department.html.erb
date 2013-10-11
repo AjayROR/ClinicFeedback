@@ -1,0 +1,22 @@
+	<% if @department.users.count > 0 %>
+
+	  <b> All Doctors : </b>
+
+	    <table class = "table table-striped table-condensed">
+       <tr>
+	          <th>Name </th>
+           <th>Email ID </th>
+       </tr>
+            
+           <% @department_doctors.each do |doctor| %>
+             <tr> 
+              <td> <%= doctor.name %>  </td>
+              <td> <%= doctor.email %>  </td>
+            </tr>
+            <% end %>
+      </table>
+  
+  <% else %>
+   <strong>Sorry, No Docs added yet for this Department !</strong>
+  <% end %>
+  <%= link_to 'Show Detail', @department %>

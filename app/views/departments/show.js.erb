@@ -1,0 +1,8 @@
+ 
+$modal = $('.modal'),
+$modalBody = $('.modal .modal-body'),
+$modalHeading = $('.modal .modal-heading');
+$modalHeading.html("<%= @department.name %>");
+$modalBody.html("<%= escape_javascript(render @department) %>");
+
+$modal.modal();
