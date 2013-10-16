@@ -3,6 +3,7 @@ class ManualResetsController < ApplicationController
 	def new
 	end
 
+#yes it's a test.
 	def create
 		 user = User.find_by_email(params[:email])
 		 flash[:success] = 'Old password   '+User.find_by_email('sahu.ajaykumar4@gmail.com').encrypted_password

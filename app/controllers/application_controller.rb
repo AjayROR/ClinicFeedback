@@ -3,10 +3,11 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
   helper :all
-
+#Just tyring to hcange few contents for my github push hope that will help everyone understanding how 
+#github works
  #rescue_from ActiveRecord::RecordNotFound, :with => :routing_error
   before_filter :set_cache_buster
-
+#now it's fine now. 
   before_filter :global_user
 
 #  helper_method :current_user_is_admin?

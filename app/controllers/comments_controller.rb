@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 	# end
 	# 
 
+#justa test 
 
 	def create
  
